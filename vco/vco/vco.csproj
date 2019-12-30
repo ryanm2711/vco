@@ -48,5 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WaterFix.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\vco.dll" />
+    <Content Include="scripts\vco.pdb" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
