@@ -11,23 +11,21 @@ namespace vco
 {
     public class UsefulFunctions
     {
-        static string[] vcoIPLS = File.ReadAllLines("scripts\\vco/vco_ipls.txt");
         public UsefulFunctions()
         {
-
+            return;
         }
 
         public static bool IsVCOLoaded()
         {
-            foreach (string ipl in vcoIPLS)
+            if (Function.Call<bool>(Hash.IS_IPL_ACTIVE, "oceandrv_stream0"))
             {
-                if (Function.Call<bool>(Hash.IS_IPL_ACTIVE, ipl))
-                {
-                    return true;
-                }
+                return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
     }
 }
