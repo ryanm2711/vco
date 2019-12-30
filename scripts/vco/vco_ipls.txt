@@ -68,7 +68,6 @@ starfish_is_proc_grasses01
 starfish_is_urbangrngrass_01
 starisl
 starisl_lod
-strings.txt
 vcbeach_distantlights
 vcmainland_distantlights
 vcmidland_distantlights
