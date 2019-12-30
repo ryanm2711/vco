@@ -11,7 +11,7 @@ namespace vco
 {
     public class UsefulFunctions
     {
-        static string[] vcoIPLS = File.ReadAllLines("scripts\\vco\\vco_ipls.txt");
+        static string[] vcoIPLS = File.ReadAllLines("scripts\\vco/vco_ipls.txt");
         public UsefulFunctions()
         {
 
