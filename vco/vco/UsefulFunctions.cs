@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GTA;
 using GTA.Native;
 using GTA.Math;
+using System.Timers;
 
 namespace vco
 {
@@ -16,9 +17,16 @@ namespace vco
             return;
         }
 
+        public static int GetHashKey(string value)
+        {    
+            return Function.Call<int>(Hash.GET_HASH_KEY, value);
+        }
+
         public static bool IsVCOLoaded()
         {
-            if (Function.Call<bool>(Hash.IS_IPL_ACTIVE, "oceandrv_stream0"))
+            var vcoDLC = GetHashKey("vicecity"); // We are storing this information for later use. No need to use more computer power to constantly get the hash key of the dlc.
+
+            if (Function.Call<bool>(Hash.IS_DLC_PRESENT, vcoDLC))
             {
                 return true;
             }
