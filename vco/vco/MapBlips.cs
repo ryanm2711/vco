@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GTA;
 using GTA.Native;
 using GTA.Math;
+using System.Xml.Linq;
 
 namespace vco
 {
@@ -13,11 +14,25 @@ namespace vco
     {
         List<Blip> vcoMapBlips = new List<Blip>(); // We are creating a list so we can keep track of the blips on the player's map
 
+        XDocument doc = XDocument.Load("./scripts/vco/mapBlips.xml");
+
         bool hasCreatedBlips;
         bool hasRemovedBlips;
+
         public MapBlips()
         {
             Tick += OnTick;
+
+            // Checking to see if blip has already been created when script starts 
+            /*var getAllBlips = World.GetAllBlips();
+
+            foreach (Tuple<Vector3, string, int, bool, int> tuple in BlipsDefs)
+            {
+                foreach (Blip vcoBlip in World.GetAllBlips())
+                {
+                    
+                }
+            }*/
         }
 
         static readonly Tuple<Vector3, string, int, bool, int>[] BlipsDefs = new Tuple<Vector3, string, int, bool, int>[]
@@ -35,6 +50,7 @@ namespace vco
                     {
                         UsefulFunctions.CreateBlip(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, vcoMapBlips); // This is our custom function for creating blips, I recommend you use this for cleaner code :)
                     }
+                    
                     hasCreatedBlips = !hasCreatedBlips; // Reverses a boolean so it's = opposite
                     hasRemovedBlips = !hasRemovedBlips;
                 }
