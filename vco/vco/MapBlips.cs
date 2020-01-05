@@ -42,13 +42,13 @@ namespace vco
 
         void OnTick(object sender, EventArgs e)
         {
-            if (UsefulFunctions.IsVCOLoaded())
+            if (VCOFunctions.IsVCOLoaded())
             {
                 if (!hasCreatedBlips)
                 {
                     foreach (Tuple<Vector3, string, int, bool, int> tuple in BlipsDefs) // Loops through our tuple and gets information to use in our custom create blip function
                     {
-                        UsefulFunctions.CreateBlip(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, vcoMapBlips); // This is our custom function for creating blips, I recommend you use this for cleaner code :)
+                        VCOFunctions.UI.CreateBlip(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, vcoMapBlips); // This is our custom function for creating blips, I recommend you use this for cleaner code :)
                     }
                     
                     hasCreatedBlips = !hasCreatedBlips; // Reverses a boolean so it's = opposite
