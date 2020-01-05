@@ -7,6 +7,7 @@ using GTA;
 using GTA.Native;
 using GTA.Math;
 using System.Xml.Linq;
+using System.Xml;
 
 namespace vco
 {
@@ -14,7 +15,7 @@ namespace vco
     {
         List<Blip> vcoMapBlips = new List<Blip>(); // We are creating a list so we can keep track of the blips on the player's map
 
-        XDocument doc = XDocument.Load("./scripts/vco/mapBlips.xml");
+        XmlReader xmlReader = XmlReader.Create("./scripts/vco/mapBlips.xml");
 
         bool hasCreatedBlips;
         bool hasRemovedBlips;
@@ -46,10 +47,54 @@ namespace vco
             {
                 if (!hasCreatedBlips)
                 {
-                    foreach (Tuple<Vector3, string, int, bool, int> tuple in BlipsDefs) // Loops through our tuple and gets information to use in our custom create blip function
+                    while (xmlReader.Read()) // Reading loop (I honestly don't really know what this does, pretty sure it loops through the elements)
                     {
-                        VCOFunctions.UI.CreateBlip(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, vcoMapBlips); // This is our custom function for creating blips, I recommend you use this for cleaner code :)
+                        if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name == "Blip")
+                        {
+                            string name;
+                            float x, y, z;
+                            int spriteID;
+                            int colourID;
+                            bool shortRange;
+
+                            // Read the name from the XML file
+                            xmlReader.ReadToDescendant("Name");
+                            xmlReader.Read();
+                            name = xmlReader.Value;
+
+                            // Read the position from the XML file
+                            xmlReader.ReadToFollowing("X");
+                            xmlReader.Read();
+                            float.TryParse(xmlReader.Value, out x);
+
+                            xmlReader.ReadToFollowing("Y");
+                            xmlReader.Read();
+                            float.TryParse(xmlReader.Value, out y);
+
+                            xmlReader.ReadToFollowing("Z");
+                            xmlReader.Read();
+                            float.TryParse(xmlReader.Value, out z);
+
+                            // Read the sprite id from the XML file
+                            xmlReader.ReadToFollowing("SpriteID");
+                            xmlReader.Read();
+                            Int32.TryParse(xmlReader.Value, out spriteID);
+
+                            // Read the colour id from the XML file
+                            xmlReader.ReadToFollowing("ColourID");
+                            xmlReader.Read();
+                            Int32.TryParse(xmlReader.Value, out colourID);
+
+                            // Read the short range value from the XML file
+                            xmlReader.ReadToFollowing("ShortRange");
+                            xmlReader.Read();
+                            bool.TryParse(xmlReader.Value, out shortRange);
+
+                            VCOFunctions.UI.CreateBlip(new Vector3(x, y, z), name, spriteID, shortRange, colourID, vcoMapBlips); // This is our custom function for creating blips, I recommend you use this for cleaner code :
+                        }
                     }
+
+                    xmlReader.Close();
                     
                     hasCreatedBlips = !hasCreatedBlips; // Reverses a boolean so it's = opposite
                     hasRemovedBlips = !hasRemovedBlips;
