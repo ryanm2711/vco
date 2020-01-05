@@ -53,6 +53,7 @@
   <ItemGroup>
     <Content Include="scripts\vco.dll" />
     <Content Include="scripts\vco.pdb" />
+    <Content Include="scripts\vco\mapBlips.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

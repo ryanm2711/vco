@@ -1,0 +1,11 @@
+<MapBlips>
+    <Blip>
+        <Name>Malibu Club</Name>
+        <X>-3021.0</X>
+        <Y>-2565.0</Y>
+        <Z>0.0</Z>
+        <SpriteID>614</SpriteID>
+        <ColourID>0</ColourID>
+        <ShortRange>true</ShortRange>
+    </Blip>
+</MapBlips>

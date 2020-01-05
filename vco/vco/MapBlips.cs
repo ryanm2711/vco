@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using GTA;
 using GTA.Native;
 using GTA.Math;
-using System.Xml.Linq;
 using System.Xml;
 
 namespace vco
