@@ -1,0 +1,29 @@
+<GangBlips>
+    <Blip>
+        <Name>Gang Hideout</Name>
+        <X>-5000</X>
+        <Y>-2565</Y>
+        <Z>125</Z>
+        <SpriteID>438</SpriteID>
+        <ColourID>1</ColourID>
+        <ShortRange>true</ShortRange>
+    </Blip>
+	<Blip>
+        <Name>Gang Hideout</Name>
+        <X>-5000</X>
+        <Y>-5500</Y>
+        <Z>1</Z>
+        <SpriteID>438</SpriteID>
+        <ColourID>1</ColourID>
+        <ShortRange>true</ShortRange>
+    </Blip>
+	<Blip>
+        <Name>Gang Hideout</Name>
+        <X>-5000</X>
+        <Y>-4500</Y>
+        <Z>5</Z>
+        <SpriteID>438</SpriteID>
+        <ColourID>1</ColourID>
+        <ShortRange>true</ShortRange>
+    </Blip>
+</GangBlips>

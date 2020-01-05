@@ -22,17 +22,15 @@ namespace vco
         public MapBlips()
         {
             Tick += OnTick;
+            Aborted += OnAbort;
+        }
 
-            // Checking to see if blip has already been created when script starts 
-            /*var getAllBlips = World.GetAllBlips();
-
-            foreach (Tuple<Vector3, string, int, bool, int> tuple in BlipsDefs)
+        void OnAbort(object sender, EventArgs e)
+        {
+            foreach (Blip b in vcoMapBlips)
             {
-                foreach (Blip vcoBlip in World.GetAllBlips())
-                {
-                    
-                }
-            }*/
+                Function.Call(Hash.REMOVE_BLIP, b);
+            }
         }
 
         void OnTick(object sender, EventArgs e)
@@ -100,7 +98,7 @@ namespace vco
                 {
                     foreach (Blip b in vcoMapBlips) // Loops through the list of blips, b is the result of each blip
                     {
-                        Function.Call(Hash.REMOVE_BLIP, b); // This removes every blip in list
+                        b.Delete(); // This removes every blip in list
                     }
                     vcoMapBlips.Clear(); // Clears our list so it's empty again
 
