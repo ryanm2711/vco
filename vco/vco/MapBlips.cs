@@ -36,11 +36,6 @@ namespace vco
             }*/
         }
 
-        static readonly Tuple<Vector3, string, int, bool, int>[] BlipsDefs = new Tuple<Vector3, string, int, bool, int>[]
-        {
-            Tuple.Create<Vector3, string, int, bool, int>(new Vector3(-3021.0f, -2565.0f, 0.0f), "Malibu Club", 614, true, 0), // Malibu Club
-        };
-
         void OnTick(object sender, EventArgs e)
         {
             if (VCOFunctions.IsVCOLoaded())
